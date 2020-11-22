@@ -1,0 +1,39 @@
+<% if user_signed_in? %>
+
+  <table class="table table-bordered table-hover table-striped table-dark">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Net worth</th>
+        <th>Instagram</th>
+        <th> </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @friends.each do |friend| %>
+      <% if friend.user == current_user %>
+        <tr>
+          <td>
+  <%= link_to friend.first_name + ' ' + friend.last_name, friend, class:'btn btn-info' %>
+          <td><%= friend.age %></td>
+          <td><%= friend.net_worth %></td>
+          <td><%= friend.instagram %></td>
+          <td><%= link_to 'Delete', friend, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger btn-sm" %></td>
+
+        </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Friend', new_friend_path, class:"btn btn-info" %>
+<% else %>
+
+<h3>Please log in to see your friends here</h3><br/>
+Click on <%=link_to 'Sign Up', new_user_registration_path %> or <%=link_to 'Log In', new_user_session_path %>
+
+<% end %>

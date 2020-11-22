@@ -1,0 +1,35 @@
+<div class="card text-center">
+  <div class="card-header">
+<h3>Sign up</h3>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Let's Build A Great Friendship</h5>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field form-group">
+    <%# f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder:"Email" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.password_field :password, autocomplete: "new-password", class:"form-control", placeholder:"Password" %>
+  </div>
+
+  <div class="field form-group">
+    <%# f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", placeholder:"Confirm Your Password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up", class:'btn btn-primary' %> <br/><br/>
+    <%= render "devise/shared/links" %><br/>
+  </div>
+  <div class="card-footer text-muted">
+Secure Sign-Up Technology - 2021
+  </div>
+</div>
+<% end %>
+
+
+
